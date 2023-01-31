@@ -1,0 +1,5 @@
+export * from "./autor/base-autor.dto"
+export * from "./autor/create-autor.dto"
+export * from "./autor/pagination-autor.dto"
+export * from "./autor/read-autor.dto"
+export * from "./autor/update-autor.dto"
