@@ -1,34 +1,24 @@
-import { IsNotEmpty } from "class-validator";
-import { isPositive, IsString } from "class-validator/types/decorator/decorators";
+import { IsDate, IsNotEmpty, IsString, Length, MaxLength, MinLength } from "class-validator";
 import { ProductEntity } from "src/modules/sales/entities";
-// import { isNotEmptyValidationOpntions, IsStringValidationOpntions,IsPositiveValidationOpntions } from '@shared/validation'
+import { isNotEmptyValidationOpntions, IsStringValidationOpntions,IsPositiveValidationOpntions } from '@shared/validation'
 export  class BaseLibroDto{
 
+    @IsString()
+    @MinLength(3)
+    @MaxLength(100)
     @IsNotEmpty(isNotEmptyValidationOpntions())
     @IsString(IsStringValidationOpntions())
     readonly name:string;
 
-
+    @IsDate()
     @IsNotEmpty(isNotEmptyValidationOpntions())
-    @IsString(IsStringValidationOpntions())
     readonly fechaCreacion:ProductEntity[];
 
+    @IsString()
+    @MinLength(3)
+    @MaxLength(100)
     @IsNotEmpty(isNotEmptyValidationOpntions())
     @IsString(IsStringValidationOpntions())
-    readonly Autor:ProductEntity[];
+    readonly genero:string;
     
-}
-
-function isNotEmptyValidationOpntions(): import("class-validator").ValidationOptions {
-    throw new Error("Function not implemented.");
-}
-
-
-function IsStringValidationOpntions(): import("class-validator").ValidationOptions {
-    throw new Error("Function not implemented.");
-}
-
-
-function IsPositiveValidationOpntions(): unknown {
-    throw new Error("Function not implemented.");
 }

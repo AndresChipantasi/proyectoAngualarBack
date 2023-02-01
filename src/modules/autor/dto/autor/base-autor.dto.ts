@@ -1,32 +1,30 @@
+import { LibroEntity } from 'src/modules/libro/entities/libro.entity';
 import { IsNotEmpty } from "class-validator";
-import { isPositive, IsString } from "class-validator/types/decorator/decorators";
-// import { isNotEmptyValidationOpntions, IsStringValidationOpntions,IsPositiveValidationOpntions } from '@shared/validation'
+import { IsDate, isPositive, IsString, Length, MaxLength, MinLength } from "class-validator/types/decorator/decorators";
+import { isNotEmptyValidationOpntions, IsStringValidationOpntions,IsPositiveValidationOpntions } from '@shared/validation'
 export  class BaseAutorDto{
 
+    @IsString()
+    @MinLength(3)
+    @MaxLength(100)
     @IsNotEmpty(isNotEmptyValidationOpntions())
     @IsString(IsStringValidationOpntions())
     readonly name:string;
 
+    @IsDate()
     @IsNotEmpty(isNotEmptyValidationOpntions())
-    @IsString(IsStringValidationOpntions())
     // @isPositive(IsPositiveValidationOpntions())
     readonly fechaNacimiento:Date;
 
+    @IsString()
+    @MinLength(3)
+    @MaxLength(100)
     @IsNotEmpty(isNotEmptyValidationOpntions())
     @IsString(IsStringValidationOpntions())
     readonly nacionalidad:string;
+
+    @IsNotEmpty(isNotEmptyValidationOpntions())
+    @IsString(IsStringValidationOpntions())
+    readonly Libro:LibroEntity[];
 }
 
-function isNotEmptyValidationOpntions(): import("class-validator").ValidationOptions {
-    throw new Error("Function not implemented.");
-}
-
-
-function IsStringValidationOpntions(): import("class-validator").ValidationOptions {
-    throw new Error("Function not implemented.");
-}
-
-
-function IsPositiveValidationOpntions(): unknown {
-    throw new Error("Function not implemented.");
-}

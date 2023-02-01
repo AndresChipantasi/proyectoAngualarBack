@@ -45,6 +45,13 @@ export class LibroEntity{
         })
         fechaCreacion:string;
     
+    @Column('varchar', {
+        name:'genero',
+        unique:true,
+        comment: 'Tipo de genero del libro',
+        })
+        genero:string;
+
     //Relationship   
      // Relaciones de uno a muchos
      @ManyToOne(() => AutorEntity, (Autor) => Autor.libro)
